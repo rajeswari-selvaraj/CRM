@@ -13,6 +13,7 @@ const resetPassword = async (req, res, { userModel }) => {
   const databasePassword = await UserPassword.findOne({ user: userId, removed: false });
   const user = await User.findOne({ _id: userId, removed: false }).exec();
 
+
   if (!user.enabled && user.role === 'owner') {
     const settings = useAppSettings();
     const idurar_app_email = settings['idurar_app_email'];

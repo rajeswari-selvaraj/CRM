@@ -10,6 +10,7 @@ const { increaseBySettingKey } = require('@/middlewares/settings');
 const create = async (req, res) => {
   const { items = [], taxRate = 0, discount = 0 } = req.body;
 
+  //{itemName: "axess", description: "web page", quantity: 2, price: 100, total: 200}
   // default
   let subTotal = 0;
   let taxTotal = 0;

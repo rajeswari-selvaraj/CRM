@@ -6,7 +6,7 @@
     "node": "20.9.0"
   },
   "scripts": {
-    "start": "node src/server.js",
+    "start": "nodemon src/server.js",
     "dev": "nodemon src/server.js --ignore public/",
     "production": "NODE_ENV=production",
     "setup": "node src/setup/setup.js",
@@ -35,6 +35,7 @@
     "mongoose-autopopulate": "^1.1.0",
     "multer": "^1.4.4",
     "node-cache": "^5.1.2",
+    "nodemailer": "^6.9.13",
     "openai": "^4.27.0",
     "pug": "^3.0.2",
     "resend": "^2.0.0",
@@ -42,7 +43,9 @@
     "transliteration": "^2.3.5"
   },
   "devDependencies": {
-    "nodemon": "3.0.1"
+    "nodemon": "^3.0.1",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
   },
   "_moduleAliases": {
     "@": "src"

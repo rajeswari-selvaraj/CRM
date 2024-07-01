@@ -5,6 +5,12 @@ const compression = require('compression');
 
 const cookieParser = require('cookie-parser');
 
+const yaml = require('yamljs');
+const swaggerUI = require('swagger-ui-express');
+
+const swaggerFilePath = "./src/app.yaml";
+const swaggerJsDoc = yaml.load(swaggerFilePath);
+
 const coreAuthRouter = require('./routes/coreRoutes/coreAuth');
 const coreApiRouter = require('./routes/coreRoutes/coreApi');
 const coreDownloadRouter = require('./routes/coreRoutes/coreDownloadRouter');
@@ -41,6 +47,8 @@ app.use('/api', adminAuth.isValidAuthToken, coreApiRouter);
 app.use('/api', adminAuth.isValidAuthToken, erpApiRouter);
 app.use('/download', coreDownloadRouter);
 app.use('/public', corePublicRouter);
+
+app.use('/docs',swaggerUI.serve,swaggerUI.setup(swaggerJsDoc));
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);

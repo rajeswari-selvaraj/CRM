@@ -5,7 +5,12 @@ const router = express.Router();
 const { catchErrors } = require('@/handlers/errorHandlers');
 const adminAuth = require('@/controllers/coreControllers/adminAuth');
 
+
+
 router.route('/login').post(catchErrors(adminAuth.login));
+router.route('/register').post(catchErrors(adminAuth.register));
+router.route('/verify/:id/:eToken').get(catchErrors(adminAuth.eVerify));
+// router.route('/verify/@/@').get(catchErrors(adminAuth.eVerify));
 
 router.route('/forgetpassword').post(catchErrors(adminAuth.forgetPassword));
 router.route('/resetpassword').post(catchErrors(adminAuth.resetPassword));

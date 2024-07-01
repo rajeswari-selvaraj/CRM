@@ -13,13 +13,14 @@ const forgetPassword = async (req, res, { userModel }) => {
   const UserPassword = mongoose.model(userModel + 'Password');
   const User = mongoose.model(userModel);
   const { email } = req.body;
-
   // validate
   const objectSchema = Joi.object({
     email: Joi.string()
       .email({ tlds: { allow: true } })
       .required(),
   });
+
+  
 
   const { error, value } = objectSchema.validate({ email });
   if (error) {
@@ -32,8 +33,12 @@ const forgetPassword = async (req, res, { userModel }) => {
     });
   }
 
+  // console.log(User);
   const user = await User.findOne({ email: email, removed: false });
+  // console.log(user);
   const databasePassword = await UserPassword.findOne({ user: user._id, removed: false });
+ 
+  // console.log(databasePassword);
 
   if (!user.enabled)
     return res.status(409).json({

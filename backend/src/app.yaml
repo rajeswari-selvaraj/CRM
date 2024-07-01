@@ -1,0 +1,60 @@
+openapi: "3.0.0"
+info:
+  title: Lead-R
+  description: "This is a documentaion for Lead-R Application"
+  contact:
+    name: "Axess Technology"
+    url: "https://axesstechnology.in"
+    email: "info@axesstechnology.in"
+  version: 1.0
+  servers:
+    - url: "http://localhost:8888/docs"
+      description: "This is local server"
+  schemes: ["http", "https"]
+  tags:
+    - name: "Admin"
+      description: "Admin is the primary user"
+    - name: "People"
+      description: "Contact person for perticular client"
+    - name: "Company"
+      description:  "leads available company"
+    - name: "client"
+      description: "who is using our product"
+
+paths:
+  /api/register:
+    post:
+      tags:
+        - "Admin"
+      summary: "To register a admin user"
+      description: "To register a admin, we need email,password and name fields mandatory.plan,subcription,timezone,country and language parameters are optional one. while entring this api it will check all the required fields are entired or not, if yes it will check this email is already available or not, if it is not available then it will allow to insert data in admin table and then convert into hash key value then it will insert in to admin password table.Once email and password is inserted need to send verification email to admin mail id to verify account."
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object 
+              properties:
+                email:
+                  type: string
+                name: 
+                  type: string
+                password:
+                  type: string
+                plan:
+                  type: string
+                subscriptionId:
+                  type: string
+                timezone:
+                  type: string
+                country:
+                  type: string
+                language:
+                  type: string
+      responses:
+        "200":
+          description: "Account registered successfully. Please verify your email."
+        "409":
+          description: "Invalid email."
+        "500":
+          description: "internal server error"

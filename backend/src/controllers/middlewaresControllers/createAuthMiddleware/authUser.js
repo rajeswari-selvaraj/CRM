@@ -48,8 +48,27 @@ const authUser = async (req, res, { user, databasePassword, password, UserPasswo
           role: user.role,
           email: user.email,
           photo: user.photo,
-        },
-        message: 'Successfully login user',
+          branch: {
+          _id: "6666a5f2d5a829f6b978abca",
+          removed: false,
+          enabled: true,
+          name: "Main",
+          account: "6666a5f2d5a829f6b978abc8",
+          Employees: [],
+          otherPhone: [],
+          otherEmail: [],
+          isPublic: false,
+          images: [],
+          files: [],
+          customField: [],
+          created: "2024-06-10T07:06:26.576Z",
+          updated: "2024-06-10T07:06:26.576Z",
+          __v: 0
+      },
+      token_663b61e040dcb2c726905efb: token,
+      maxAge: 365,
+     },
+      message: 'Successfully login user',
       });
   } else {
     return res.status(403).json({

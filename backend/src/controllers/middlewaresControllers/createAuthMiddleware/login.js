@@ -13,6 +13,11 @@ const { useAppSettings } = require('@/settings');
 const authUser = require('./authUser');
 
 const login = async (req, res, { userModel }) => {
+
+// console.log(req.baseUrl);
+// console.log(req.url);
+// console.log(req.path);
+
   const UserPasswordModel = mongoose.model(userModel + 'Password');
   const UserModel = mongoose.model(userModel);
   const { email, password } = req.body;

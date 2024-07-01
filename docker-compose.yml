@@ -9,7 +9,7 @@ services:
       - "8888:8888"
     environment:
       - NODE_ENV=development
-      - DATABASE=mongodb://mongo:27017/local-idurar-erp-crp
+      - DATABASE=mongodb://localhost:27017/local-idurar-erp-crp
       - PORT=8888
       - NODE_OPTIONS=--openssl-legacy-provider
       - JWT_SECRET=secret_key_1234

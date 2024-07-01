@@ -38,10 +38,23 @@ methods.delete = async (req, res) => {
 };
 
 methods.update = async (req, res) => {
+  const { isDefault } = req.body;
+
+  if (isDefault) {
+    await Model.updateMany({}, { isDefault: false });
+  }
+
+  const countDefault = await Model.countDocuments({
+    isDefault: true,
+  });
+  req.body.isDefault= countDefault < 1 ? true : false;
+
+  const result = await Model.findOneAndUpdate({_id:req.params.id},{$set:req.body}).exec();
+
   return res.status(200).json({
     success: true,
-    result: null,
-    message: 'Please Upgrade to Premium  Version to have full features',
+    result: result,
+    message: 'Tax updated successfully',
   });
 };
 

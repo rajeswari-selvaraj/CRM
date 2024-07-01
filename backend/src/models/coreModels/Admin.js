@@ -10,7 +10,6 @@ const adminSchema = new Schema({
     type: Boolean,
     default: false,
   },
-
   email: {
     type: String,
     lowercase: true,

@@ -8,7 +8,6 @@ const schema = require('./schemaValidate');
 
 const create = async (req, res) => {
   let body = req.body;
-
   const { error, value } = schema.validate(body);
   if (error) {
     const { details } = error;
